@@ -14,11 +14,6 @@ Two production-grade machine learning models, deployed in a real-time Streamlit 
 [![NumPy](https://img.shields.io/badge/NumPy-Compute-013243?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org/)
 [![Plotly](https://img.shields.io/badge/Plotly-Viz-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)](https://plotly.com/)
 
-[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
-[![Last Commit](https://img.shields.io/github/last-commit/USERNAME/REPO?style=flat-square)](https://github.com/USERNAME/REPO/commits)
-[![Repo Size](https://img.shields.io/github/repo-size/USERNAME/REPO?style=flat-square)](https://github.com/USERNAME/REPO)
-[![Stars](https://img.shields.io/github/stars/USERNAME/REPO?style=flat-square)](https://github.com/USERNAME/REPO/stargazers)
-
 [**Live Demo**](#-demo) · [**Screenshots**](#-application-preview) · [**Installation**](#-installation) · [**Report a Bug**](https://github.com/USERNAME/REPO/issues)
 
 </div>
@@ -144,10 +139,8 @@ The portal applies two independent ML models to the invoice lifecycle, giving fi
 
 | Resource | Link |
 |---|---|
-| 🌐 Live Demo | `[Insert live deployment URL]` |
 | ☁️ Streamlit Cloud | `[Insert Streamlit Cloud URL]` |
-| ▶️ YouTube Walkthrough | `[Insert YouTube demo link]` |
-| 🎞️ GIF Demo | `[Insert demo GIF]` |
+
 
 ---
 
