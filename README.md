@@ -438,7 +438,7 @@ The app will be available at `http://localhost:8501`.
 
 ## 📄 License
 
-This project is licensed under the `[Insert License, e.g., MIT]` License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the `MIT` License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
