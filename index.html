@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendor Invoice Intelligence Portal</title>
+<meta name="description" content="AI-powered freight forecasting and invoice risk assessment for finance operations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ============================================================ -->
+  <!-- Mobile top bar                                                -->
+  <!-- ============================================================ -->
+  <header class="mobile-bar">
+    <button class="mobile-bar__menu" id="menuToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="mobile-bar__brand">
+      <span class="mobile-bar__mark" aria-hidden="true">VI</span>
+      <span>Invoice Intelligence</span>
+    </div>
+  </header>
+
+  <div class="scrim" id="scrim" hidden></div>
+
+  <!-- ============================================================ -->
+  <!-- Sidebar                                                       -->
+  <!-- ============================================================ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__brand">
+      <div class="brand-mark" aria-hidden="true">VI</div>
+      <div class="brand-text">
+        <div class="brand-text__title">Invoice Intelligence</div>
+        <div class="brand-text__subtitle">Finance ML Platform</div>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__label">Prediction Module</div>
+      <button class="nav__item is-active" data-view="overview" aria-current="page">
+        <svg class="nav__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10.5 10 4l7 6.5M5 9v7h10V9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Overview</span>
+      </button>
+      <button class="nav__item" data-view="freight">
+        <svg class="nav__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 6h8v6H3zM11 9h3l3 2.5V12h-6M5.5 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM14 15a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Freight Cost Prediction</span>
+      </button>
+      <button class="nav__item" data-view="risk">
+        <svg class="nav__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.5 17 6v4.5c0 4-3 6.5-7 7-4-.5-7-3-7-7V6l7-3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 8v3.2M10 13.6h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>Invoice Risk Assessment</span>
+      </button>
+    </nav>
+
+    <div class="sidebar__card">
+      <div class="sidebar__card-title">Business benefits</div>
+      <ul class="benefit-list">
+        <li><span class="benefit-list__icon">📉</span>Better freight forecasting</li>
+        <li><span class="benefit-list__icon">🧾</span>Detect risky invoices early</li>
+        <li><span class="benefit-list__icon">⚡</span>Reduce manual review load</li>
+        <li><span class="benefit-list__icon">💰</span>Lower financial leakage</li>
+      </ul>
+    </div>
+
+    <div class="sidebar__footer">
+      Python · Scikit-learn · SQLite · FastAPI
+    </div>
+  </aside>
+
+  <!-- ============================================================ -->
+  <!-- Main                                                          -->
+  <!-- ============================================================ -->
+  <main class="main" id="main">
+
+    <!-- ===================== OVERVIEW ===================== -->
+    <section class="view is-active" id="view-overview" data-view-panel="overview">
+
+      <div class="hero">
+        <div class="hero__ledger" aria-hidden="true"></div>
+        <div class="hero__content">
+          <div class="eyebrow">Finance · Machine Learning</div>
+          <h1 class="hero__title">Vendor Invoice Intelligence Portal</h1>
+          <p class="hero__subtitle">AI-powered freight forecasting and invoice risk assessment for finance operations.</p>
+        </div>
+
+        <div class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-card__value">2</div>
+            <div class="kpi-card__label">ML Models</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__value">Real-Time</div>
+            <div class="kpi-card__label">Inference</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__value kpi-card__value--sm">Regression + Classification</div>
+            <div class="kpi-card__label">Model Types</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-card__value">SQLite</div>
+            <div class="kpi-card__label">Data Pipeline</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="module-grid">
+        <article class="module-card">
+          <div class="module-card__icon module-card__icon--freight" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 7h11v7H3zM14 10h3.5L21 13.5V15h-7M6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h2 class="module-card__title">Freight Cost Prediction</h2>
+          <p class="module-card__desc">Estimate expected freight cost from invoice quantity and dollar value, for budgeting and vendor negotiation ahead of invoice approval.</p>
+          <button class="btn btn--ghost" data-view="freight">Open module <span aria-hidden="true">→</span></button>
+        </article>
+
+        <article class="module-card">
+          <div class="module-card__icon module-card__icon--risk" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 20 7v5.4c0 4.8-3.4 7.7-8 8.6-4.6-.9-8-3.8-8-8.6V7l8-4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 9v4M12 16h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h2 class="module-card__title">Invoice Risk Assessment</h2>
+          <p class="module-card__desc">Classify a vendor invoice as safe for automatic approval or as a candidate for manual review, based on cost, freight, and delivery-timing signals.</p>
+          <button class="btn btn--ghost" data-view="risk">Open module <span aria-hidden="true">→</span></button>
+        </article>
+      </div>
+
+      <div class="panel panel--insight">
+        <div class="panel__heading">
+          <span class="panel__tag panel__tag--info">Business insight</span>
+        </div>
+        <p>Freight cost scales predictably with order size, but not evenly per unit. Bottom-quartile orders average roughly <strong>$0.095 in freight per unit</strong>, while top-quartile orders average roughly <strong>$0.049 per unit</strong> — nearly a 2× difference. Smaller, more frequent orders may be worth consolidating or renegotiating on freight terms.</p>
+      </div>
+
+      <div class="panel panel--caveat">
+        <div class="panel__heading">
+          <span class="panel__tag panel__tag--caveat">Model note</span>
+        </div>
+        <p>The invoice risk flag is produced by a classifier trained on a <strong>self-defined rule</strong>, not a historical, audited outcome. Its high accuracy partly reflects the model learning that rule rather than predicting independently observed fraud or error. Treat the flag as a triage signal for manual review, not a validated risk verdict.</p>
+      </div>
+
+    </section>
+
+    <!-- ===================== FREIGHT MODULE ===================== -->
+    <section class="view" id="view-freight" data-view-panel="freight">
+      <div class="view-header">
+        <div class="eyebrow">Regression Model</div>
+        <h1 class="view-header__title">🚚&nbsp; Freight Cost Prediction</h1>
+        <p class="view-header__desc">Estimate expected freight cost from invoice quantity and dollar value, for budgeting and vendor negotiation ahead of invoice approval.</p>
+      </div>
+
+      <div class="workspace">
+        <form class="panel form-panel" id="freightForm" novalidate>
+          <div class="field-grid field-grid--2">
+            <div class="field">
+              <label for="freightQuantity">Quantity</label>
+              <input type="number" id="freightQuantity" name="quantity" min="1" step="1" value="1200" inputmode="numeric" required>
+              <span class="field__hint">Total units on the purchase order</span>
+              <span class="field__error" id="err-freightQuantity" role="alert"></span>
+            </div>
+            <div class="field">
+              <label for="freightDollars">Invoice Dollars</label>
+              <div class="field__prefix-wrap">
+                <span class="field__prefix" aria-hidden="true">$</span>
+                <input type="number" id="freightDollars" name="dollars" min="0.01" step="0.01" value="18500.00" inputmode="decimal" required>
+              </div>
+              <span class="field__hint">Total invoice value in USD</span>
+              <span class="field__error" id="err-freightDollars" role="alert"></span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--block" id="freightSubmit">
+            <span class="btn__label">Predict Freight Cost</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+
+          <div class="form-alert" id="freightApiError" role="alert" hidden></div>
+        </form>
+
+        <div class="panel result-panel" id="freightResult" data-state="empty">
+          <div class="result-empty">
+            <div class="result-empty__icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none"><path d="M8 14h22v14H8zM26 19h6l5 4.5V27h-11M12 30a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM30 30a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p>Run a prediction to see the estimated freight cost here.</p>
+          </div>
+
+          <div class="result-body">
+            <div class="result-label">Estimated Freight Cost</div>
+            <div class="result-figure" id="freightValue">$0.00</div>
+            <div class="result-stat-row">
+              <div class="result-stat">
+                <div class="result-stat__label">Input Quantity</div>
+                <div class="result-stat__value" id="freightEchoQty">—</div>
+              </div>
+              <div class="result-stat">
+                <div class="result-stat__label">Invoice Value</div>
+                <div class="result-stat__value" id="freightEchoDollars">—</div>
+              </div>
+            </div>
+            <p class="result-note">Prediction generated from the trained regression model.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RISK MODULE ===================== -->
+    <section class="view" id="view-risk" data-view-panel="risk">
+      <div class="view-header">
+        <div class="eyebrow">Classification Model</div>
+        <h1 class="view-header__title">🚨&nbsp; Invoice Risk Assessment</h1>
+        <p class="view-header__desc">Evaluate whether a vendor invoice should proceed through automatic processing or require manual review.</p>
+      </div>
+
+      <div class="workspace">
+        <form class="panel form-panel" id="riskForm" novalidate>
+
+          <fieldset class="field-group">
+            <legend>Invoice details</legend>
+            <div class="field-grid field-grid--2">
+              <div class="field">
+                <label for="invoiceQuantity">Invoice Quantity</label>
+                <input type="number" id="invoiceQuantity" name="invoice_quantity" min="1" step="1" value="100" required>
+                <span class="field__error" id="err-invoiceQuantity" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="invoiceDollars">Invoice Dollars</label>
+                <div class="field__prefix-wrap">
+                  <span class="field__prefix" aria-hidden="true">$</span>
+                  <input type="number" id="invoiceDollars" name="invoice_dollars" min="0.01" step="0.01" value="5000.00" required>
+                </div>
+                <span class="field__error" id="err-invoiceDollars" role="alert"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="field-group">
+            <legend>Cost &amp; freight</legend>
+            <div class="field-grid field-grid--3">
+              <div class="field">
+                <label for="freight">Freight</label>
+                <div class="field__prefix-wrap">
+                  <span class="field__prefix" aria-hidden="true">$</span>
+                  <input type="number" id="freight" name="freight" min="0" step="0.01" value="120.00" required>
+                </div>
+                <span class="field__error" id="err-freight" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="totalItemQuantity">Total Item Quantity</label>
+                <input type="number" id="totalItemQuantity" name="total_item_quantity" min="1" step="1" value="100" required>
+                <span class="field__error" id="err-totalItemQuantity" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="totalItemDollars">Total Item Dollars</label>
+                <div class="field__prefix-wrap">
+                  <span class="field__prefix" aria-hidden="true">$</span>
+                  <input type="number" id="totalItemDollars" name="total_item_dollars" min="0.01" step="0.01" value="4998.00" required>
+                </div>
+                <span class="field__error" id="err-totalItemDollars" role="alert"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="field-group">
+            <legend>Timing</legend>
+            <div class="field-grid field-grid--2">
+              <div class="field">
+                <label for="daysPoToInvoice">PO to Invoice Days</label>
+                <input type="number" id="daysPoToInvoice" name="days_po_to_invoice" min="0" step="1" value="3" required>
+                <span class="field__error" id="err-daysPoToInvoice" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="avgReceivingDelay">Average Receiving Delay</label>
+                <input type="number" id="avgReceivingDelay" name="avg_receiving_delay" min="0" step="0.1" value="4.0" required>
+                <span class="field__error" id="err-avgReceivingDelay" role="alert"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn btn--primary btn--block" id="riskSubmit">
+            <span class="btn__label">Evaluate Invoice</span>
+            <span class="btn__spinner" aria-hidden="true"></span>
+          </button>
+
+          <div class="form-alert" id="riskApiError" role="alert" hidden></div>
+        </form>
+
+        <div class="panel result-panel" id="riskResult" data-state="empty">
+          <div class="result-empty">
+            <div class="result-empty__icon" aria-hidden="true">
+              <svg viewBox="0 0 40 40" fill="none"><path d="M20 5 34 11v9c0 8-6 12.9-14 14-8-1.1-14-6-14-14v-9l14-6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 16v6.5M20 27h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </div>
+            <p>Evaluate an invoice to see its status, confidence, and risk level here.</p>
+          </div>
+
+          <div class="result-body">
+            <div class="status-badge" id="riskStatusBadge">
+              <span class="status-badge__icon" id="riskStatusIcon" aria-hidden="true"></span>
+              <div>
+                <div class="status-badge__title" id="riskStatusTitle">Approved</div>
+                <div class="status-badge__subtitle" id="riskStatusSubtitle">Safe for automatic processing</div>
+              </div>
+            </div>
+
+            <div class="result-stat-row result-stat-row--3">
+              <div class="result-stat">
+                <div class="result-stat__label">Model Confidence</div>
+                <div class="result-stat__value" id="riskConfidence">—</div>
+              </div>
+              <div class="result-stat">
+                <div class="result-stat__label">Flag Probability</div>
+                <div class="result-stat__value" id="riskFlagProbability">—</div>
+              </div>
+              <div class="result-stat">
+                <div class="result-stat__label">Risk Level</div>
+                <div class="result-stat__value" id="riskLevel">—</div>
+              </div>
+            </div>
+
+            <div class="risk-meter">
+              <div class="risk-meter__labels">
+                <span>Low</span>
+                <span>High</span>
+              </div>
+              <div class="risk-meter__track">
+                <div class="risk-meter__marker" id="riskMeterMarker" style="left:0%"></div>
+              </div>
+              <div class="risk-meter__value" id="riskMeterValue">0.0%</div>
+            </div>
+
+            <p class="result-note result-note--caveat">Based on a self-defined rule label — use as a triage signal, not a validated fraud outcome.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
