@@ -1,0 +1,15 @@
+# ==========================================================
+# Vendor Invoice Intelligence — Python Dependencies
+# ==========================================================
+# ML / Data (keep versions compatible with saved model artifacts)
+pandas
+scikit-learn
+joblib
+
+# Web API
+fastapi
+uvicorn[standard]
+pydantic
+
+# Existing Streamlit app (optional, for app.py)
+streamlit
