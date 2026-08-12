@@ -1,22 +1,28 @@
+<div align="center">
+
 # Vendor Invoice Intelligence Portal
 
-AI-powered platform for freight cost prediction and vendor invoice risk assessment, built for finance and accounts payable teams.
+**AI-powered platform for freight cost prediction and vendor invoice risk assessment, built for finance and accounts payable teams.**
 
-🚀 **[Live Demo](https://vendor-invoice-intelligence-portal-1.onrender.com/)**  
-
-🔌 [API](https://vendor-invoice-intelligence-portal-j9ac.onrender.com) ([health check](https://vendor-invoice-intelligence-portal-j9ac.onrender.com/api/health))
+<br>
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
+![Random Forest](https://img.shields.io/badge/Random%20Forest-ML-6B7280?style=flat-square)
+![Linear Regression](https://img.shields.io/badge/Linear%20Regression-ML-6B7280?style=flat-square)
+
+</div>
 
 <p align="center">
-  <img src="assets/screenshots/banner.png" alt="Vendor Invoice Intelligence Portal banner" width="100%">
+  <img width="100%" height="887" alt="image" src="https://github.com/user-attachments/assets/a2c71200-ea88-4f71-b354-a6d5603bc8ea" />
 </p>
 
-<p align="center"><em>📷 Project banner. Insert a wide (1280×640) banner image at <code>assets/screenshots/banner.png</code></em></p>
+---
+| 🚀 Live Demo | 🔌 API |
+|---|---|
+| [Open Application](https://vendor-invoice-intelligence-portal-1.onrender.com/) | [API Endpoint](https://vendor-invoice-intelligence-portal-j9ac.onrender.com) · [Health Check](https://vendor-invoice-intelligence-portal-j9ac.onrender.com/api/health) |
 
 ---
 
@@ -111,17 +117,39 @@ Frontend Result
 ## 📂 Project Structure
 
 ```
-├── api.py                    # FastAPI backend, serves predictions
-├── index.html                # Frontend UI
-├── script.js                 # Frontend logic, calls the API
-├── style.css
-├── freight_cost_prediction/  # Freight regression training pipeline
-├── invoice_flagging/         # Invoice risk classification training pipeline
-├── inference/                # Inference wrappers used by the API
-├── models/                   # Serialized models (.pkl)
-├── notebooks/                # EDA and experimentation
-├── requirements.txt
-└── README.md
+INVOICE-INTELLIGENCE/
+│
+├── freight_cost_prediction/      # Freight cost regression training pipeline
+│   ├── data_preprocessing.py     # Feature engineering & data preparation
+│   ├── model_evaluation.py       # Metrics & evaluation scripts
+│   └── train.py                  # Model training pipeline
+│
+├── invoice_flagging/             # Invoice risk classification training pipeline
+│   ├── data_preprocessing.py     # Feature engineering & data preparation
+│   ├── model_eval.py             # Metrics & evaluation scripts
+│   └── train.py                  # Model training pipeline
+│
+├── inference/                    # Inference wrappers for real-time predictions
+│   ├── __init__.py               # Package initializer
+│   ├── predict_freight.py        # Inference pipeline for freight prediction
+│   └── predict_invoice_flag.py   # Inference pipeline for invoice flagging
+│
+├── models/                       # Serialized trained models & preprocessors
+│   ├── predict_flag_invoice.pkl  # Classification model artifact
+│   ├── predict_freight_model.pkl # Regression model artifact
+│   └── scaler.pkl                # Feature scaler
+│
+├── notebooks/                    # EDA and experimental notebooks
+│   ├── Invoice Flagging.ipynb
+│   └── Predicting Freight Cost .ipynb
+│
+├── api.py                        # FastAPI backend serving prediction endpoints
+├── app.py                        # Application entry point / server script
+├── index.html                    # Frontend user interface
+├── script.js                     # Frontend logic & API call handling
+├── style.css                     # Custom styling for UI
+├── requirements.txt              # Project dependencies
+└── README.md                     # Project documentation
 ```
 
 ---
@@ -216,3 +244,17 @@ The invoice risk model's labels are self-defined business rules rather than conf
 ## 📄 License
 
 MIT License. See [LICENSE](LICENSE) for details.
+
+---
+## 📬 Contact
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Shubh-0077)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](http://www.linkedin.com/in/shubhammalkar)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://shubhammalkar.framer.website/)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:codewleo@gmail.com)
+
+</div>
+
+<div align="center"> ⭐ If you found this project useful, consider giving it a star! </div>
