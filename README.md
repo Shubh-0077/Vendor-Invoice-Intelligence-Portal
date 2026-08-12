@@ -1,408 +1,179 @@
-<div align="center">
+# Vendor Invoice Intelligence Portal
 
-# 🧾 Vendor Invoice Intelligence Portal
+AI-powered platform for freight cost prediction and vendor invoice risk assessment, built for finance and accounts payable teams.
 
-### AI-Driven Freight Cost Prediction & Automated Invoice Risk Flagging for Finance Operations
+🚀 **[Live Demo](https://vendor-invoice-intelligence-portal-1.onrender.com/)**  
 
-Two production-grade machine learning models, deployed in a real-time Streamlit app, that predict freight costs and automatically triage vendor invoices for manual review.
+🔌 [API](https://vendor-invoice-intelligence-portal-j9ac.onrender.com) ([health check](https://vendor-invoice-intelligence-portal-j9ac.onrender.com/api/health))
 
-[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Scikit--Learn](https://img.shields.io/badge/Scikit--Learn-ML-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://www.sqlite.org/)
-[![Pandas](https://img.shields.io/badge/Pandas-Data-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
-[![NumPy](https://img.shields.io/badge/NumPy-Compute-013243?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org/)
-[![Plotly](https://img.shields.io/badge/Plotly-Viz-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)](https://plotly.com/)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-[**Live Demo**](#-demo) · [**Screenshots**](#-application-preview) · [**Installation**](#-installation) · [**Report a Bug**](https://github.com/USERNAME/REPO/issues)
+<p align="center">
+  <img src="assets/screenshots/banner.png" alt="Vendor Invoice Intelligence Portal banner" width="100%">
+</p>
 
-</div>
-
-<br>
-
-<div align="center">
-
-📷 **Project Banner**
-*(Insert project banner image here)*
-
-</div>
-
-<br>
+<p align="center"><em>📷 Project banner. Insert a wide (1280×640) banner image at <code>assets/screenshots/banner.png</code></em></p>
 
 ---
 
 ## 📖 Overview
 
-**Vendor Invoice Intelligence Portal** is an end-to-end machine learning application built for finance and accounts-payable teams who process high volumes of vendor invoices every month.
+This is a machine-learning-powered finance operations app with two modules:
 
-It solves two problems that are traditionally manual, slow, and inconsistent:
+- **Freight Cost Prediction**: estimates expected freight cost from purchase order quantity and invoice value.
+- **Invoice Risk Assessment**: evaluates a vendor invoice and flags it as safe for automatic processing or a candidate for manual review.
 
-- **How much should this invoice's freight cost be?** — answered by a regression model trained on historical purchase data.
-- **Does this invoice need a human to look at it?** — answered by a classifier trained on invoice, purchase order, and receiving signals, using business-rule-engineered risk labels.
-
-Both models are served in real time through a Streamlit application, giving finance analysts an instant, data-driven second opinion on every invoice — without replacing human judgment on the invoices that matter most.
-
-> **Why it matters:** Reviewing every invoice with equal effort wastes time on low-risk transactions and risks missing the handful that need real scrutiny. This project routes attention where it's actually needed.
-
----
-
-## ✨ Key Features
-
-| Feature | Description |
-|---|---|
-| 🚚 **Freight Cost Prediction** | Regression model estimates expected freight cost from quantity and invoice value. |
-| 🚨 **Invoice Risk Detection** | Classifier flags invoices likely to need manual review, based on 7 engineered features. |
-| ⚡ **Real-Time Predictions** | Sub-second inference through a live Streamlit interface — no batch jobs required. |
-| 📊 **Interactive Dashboard** | Clean, two-module Streamlit UI built for non-technical finance users. |
-| 🎯 **Confidence Scoring** | Every classification includes a model confidence percentage. |
-| 🌡️ **Risk Probability & Gauge** | Visual, intuitive read on how risky a flagged invoice actually is. |
-| 🔌 **Production Inference Pipeline** | Modular, reusable inference scripts decoupled from the UI layer. |
-| 🧮 **Business Rule Engine** | Transparent, auditable risk-scoring logic behind the ML label — not a black box. |
-| 🌲 **Tuned Random Forest** | Hyperparameter-optimized via `RandomizedSearchCV` with 5-fold cross-validation. |
-| 🗄️ **SQLite Integration** | Direct SQL extraction and feature aggregation from a relational invoice database. |
-
----
-
-## 💼 Business Problem
-
-Organizations processing thousands of vendor invoices per month face recurring, costly friction:
-
-- ❌ Manual invoice verification, invoice by invoice
-- ❌ Inconsistent, ad hoc freight cost estimation
-- ❌ Slow, bottlenecked approval cycles
-- ❌ Financial leakage from invoices that should have been caught but weren't
-- ❌ Human error at high review volume
-- ❌ Delayed vendor payments
-
-Accounts payable automation is one of the most practical, high-ROI applications of machine learning in finance — the data is structured, the decisions are repeatable, and the cost of a missed anomaly is measurable. Left unaddressed, these challenges scale linearly (or worse) with invoice volume, while manual review capacity doesn't.
-
----
-
-## 🛠️ Solution
-
-The portal applies two independent ML models to the invoice lifecycle, giving finance teams a consistent, explainable decision layer in place of ad hoc manual judgment.
-
-```
-                     Vendor Invoice
-                           │
-                           ▼
-                  ┌──────────────────┐
-                  │  Data Validation │
-                  └──────────────────┘
-                           │
-                           ▼
-                  ┌───────────────────┐
-                  │Feature Engineering│
-                  └───────────────────┘
-                           │
-                           ▼
-                  ┌───────────────────┐
-                  │    ML Models      │
-                  │───────────────────│
-                  │ Freight Regressor │
-                  │ Risk Classifier   │
-                  └───────────────────┘
-                           │
-                           ▼
-                  ┌───────────────────┐
-                  │    Prediction     │
-                  │ Cost · Status ·   │
-                  │ Confidence · Risk │
-                  └───────────────────┘
-                           │
-                           ▼
-                  ┌───────────────────┐
-                  │ Business Decision │
-                  │ Approve / Review  │
-                  └───────────────────┘
-```
+The frontend is a lightweight HTML/CSS/JS interface that calls a FastAPI backend, which runs inference through trained scikit-learn models.
 
 ---
 
 ## 🖼️ Application Preview
 
-<div align="center">
+### 🏠 Overview
+> <img width="1619" height="905" alt="Screenshot 2026-08-11 225204" src="https://github.com/user-attachments/assets/94a1e386-21c8-4764-8e8c-df1bdb4a637f" />
 
-| | |
-|---|---|
-| 📷 **Home Page** <br> *(Insert: Streamlit landing screen)* | 📷 **Freight Prediction Screen** <br> *(Insert: Freight input form)* |
-| 📷 **Freight Prediction Result** <br> *(Insert: Predicted freight cost output)* | 📷 **Invoice Flagging Screen** <br> *(Insert: Invoice input form)* |
-| 📷 **Invoice Prediction Result** <br> *(Insert: Approved/Flagged output)* | 📷 **Risk Gauge** <br> *(Insert: Risk gauge visualization)* |
-| 📷 **Model Performance** <br> *(Insert: Confusion matrix / metrics view)* | 📷 **Architecture Diagram** <br> *(Insert: System architecture diagram)* |
-| 📷 **Repository Structure** <br> *(Insert: Folder tree screenshot)* | |
 
-</div>
+### 🚚 Freight Cost Prediction
+> <img width="1919" height="909" alt="Screenshot 2026-08-11 225245" src="https://github.com/user-attachments/assets/d819e6c9-b957-4ed7-a4c9-8bf8e9e54b20" />
 
----
 
-## 🎬 Demo
-
-| Resource | Link |
-|---|---|
-| ☁️ Streamlit Cloud | `[Insert Streamlit Cloud URL]` |
+### 🚨 Invoice Risk Assessment
+> <img width="1902" height="906" alt="Screenshot 2026-08-11 225432" src="https://github.com/user-attachments/assets/61c1d8e5-5f95-420e-a5f6-6b27d4d56612" />
 
 
 ---
 
-## 🏗️ Project Architecture
+## ✨ Key Features
 
-<div align="center">
+- Freight cost prediction (regression)
+- Invoice risk assessment (classification)
+- Real-time ML inference via REST API
+- FastAPI backend with a documented health endpoint
+- Custom HTML/CSS/JavaScript frontend
+- Confidence score and risk level shown per prediction
+- Cloud-deployed frontend and backend
 
-📷 **Architecture Diagram**
-*(Insert: Full system architecture diagram)*
+---
 
-</div>
+## 🖱️ How to Use the Live Application
+
+1. Open the [Live Demo](https://vendor-invoice-intelligence-portal-1.onrender.com/).
+2. Choose **Freight Cost Prediction** or **Invoice Risk Assessment** from the sidebar.
+3. Enter the requested invoice/purchase order values.
+4. Submit the form.
+5. View the prediction, along with confidence and (for risk assessment) a risk level indicator.
+
+---
+
+## 🧰 Technology Stack
+
+**Frontend** -> 
+HTML · CSS · JavaScript
+
+**Backend** -> 
+Python · FastAPI · Uvicorn
+
+**Machine Learning** -> 
+scikit-learn · pandas · NumPy
+
+**Data** -> 
+SQLite
+
+**Deployment** -> 
+Render
+
+---
+
+## 🔄 How It Works
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                        DATA LAYER                           │
-│   SQLite (inventory.db)  →  purchases + vendor_invoice      │
-└───────────────────────────────┬─────────────────────────────┘
-                                 │  SQL extraction & aggregation
-                                 ▼
-┌──────────────────────────────────────────────────────────────┐
-│                     TRAINING PIPELINE                        │
-│  Feature Engineering → Business-Rule Labeling → Preprocessing│
-│  → Model Training → Hyperparameter Tuning → Evaluation       │
-└───────────────────────────────┬──────────────────────────────┘
-                                 │  Joblib serialization
-                                 ▼
-┌─────────────────────────────────────────────────────────────┐
-│                      MODEL ARTIFACTS                        │
-│  predict_freight_model.pkl · predict_flag_invoice.pkl       │
-│  scaler.pkl                                                 │
-└───────────────────────────────┬─────────────────────────────┘
-                                 │  loaded at inference time
-                                 ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    INFERENCE + UI LAYER                     │
-│  predict_freight.py · predict_invoice_flag.py  →  app.py    │
-│                    (Streamlit Application)                  │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 🧰 Tech Stack
-
-| Category | Technologies |
-|---|---|
-| **Programming Language** | Python 3.10+ |
-| **Machine Learning** | Scikit-learn (Random Forest, Linear Regression, RandomizedSearchCV) |
-| **Data Manipulation** | Pandas, NumPy |
-| **Database** | SQLite |
-| **Visualization** | Matplotlib, Seaborn, Plotly |
-| **Deployment** | Streamlit |
-| **Model Persistence** | Joblib |
-| **Development Tools** | Jupyter Notebook, VS Code |
-| **Version Control** | Git, GitHub |
-
----
-
-## 🔄 Machine Learning Pipeline
-
-```
-Business Understanding
-        │
-        ▼
-   Data Collection  (SQL extraction from inventory.db)
-        │
-        ▼
-        EDA  (distributions, correlations, risk conditions)
-        │
-        ▼
- Feature Engineering  (aggregations, date deltas, risk score)
-        │
-        ▼
-   Preprocessing  (train/test split, StandardScaler)
-        │
-        ▼
-   Model Training  (Decision Tree → Random Forest)
-        │
-        ▼
-Hyperparameter Tuning  (RandomizedSearchCV, 5-fold CV)
-        │
-        ▼
-     Evaluation  (accuracy, F1, confusion matrix)
-        │
-        ▼
-      Inference  (predict_freight.py / predict_invoice_flag.py)
-        │
-        ▼
-     Deployment  (Streamlit application)
+User
+ ↓
+HTML / CSS / JavaScript
+ ↓
+FastAPI REST API
+ ↓
+ML Inference (scikit-learn)
+ ↓
+Trained Models (.pkl)
+ ↓
+Prediction
+ ↓
+Frontend Result
 ```
 
 ---
 
-## 🤖 Models Used
-
-| Model | Purpose | Performance | Final Selection |
-|---|---|---|---|
-| Linear Regression | Freight cost estimation | R² ≈ 0.95 · MAE ≈ 27 · RMSE ≈ 174 | ✅ Selected |
-| Decision Tree Regressor | Freight cost benchmark | Lower generalization than linear baseline | ❌ |
-| Random Forest Regressor | Freight cost benchmark | Comparable, added complexity without a clear gain | ❌ |
-| Decision Tree Classifier | Invoice risk benchmark | Higher variance, overfits | ❌ |
-| Random Forest Classifier | Invoice risk benchmark | ~99% accuracy, untuned | ❌ |
-| **Random Forest + RandomizedSearchCV** | Invoice risk classification | **98.9% accuracy** | ✅ **Selected** |
-
-**Why these models won:**
-- **Linear Regression** matched tree-based alternatives on accuracy while staying fully interpretable — an easy sell to non-technical finance stakeholders.
-- **Tuned Random Forest** delivered the same raw accuracy as the untuned version but with cross-validated hyperparameters, giving it better expected generalization to unseen invoices.
-
-<details>
-<summary><strong>📌 Best Hyperparameters (click to expand)</strong></summary>
-
-```python
-{
-    "n_estimators": 300,
-    "max_depth": None,
-    "min_samples_split": 5,
-    "min_samples_leaf": 1,
-    "max_features": "log2"
-}
-```
-
-</details>
-
----
-
-## 📊 Model Performance
-
-### Classification — Invoice Flagging
-
-| Class | Precision | Recall | F1-Score |
-|---|---|---|---|
-| 0 — Approved | 0.98 | 1.00 | 0.99 |
-| 1 — Flagged | 1.00 | 0.97 | 0.98 |
-
-**Overall Accuracy: 98.9%**
-
-<details>
-<summary><strong>📌 Confusion Matrix (click to expand)</strong></summary>
-
-**Before Hyperparameter Tuning**
-
-|  | Predicted: Approved | Predicted: Flagged |
-|---|---|---|
-| **Actual: Approved** | 721 | 12 |
-| **Actual: Flagged** | 0 | 376 |
-
-**After Hyperparameter Tuning**
-
-|  | Predicted: Approved | Predicted: Flagged |
-|---|---|---|
-| **Actual: Approved** | 721 | 13 |
-| **Actual: Flagged** | 0 | 375 |
-
-</details>
-
-### Regression — Freight Cost Prediction
-
-| Metric | Value |
-|---|---|
-| MAE | ≈ 27 |
-| RMSE | ≈ 174 |
-| R² | ≈ 0.95 |
-
-<div align="center">
-
-📷 **Confusion Matrix**
-*(Insert: Confusion matrix visualization)*
-
-📷 **Feature Importance**
-*(Insert: Feature importance chart)*
-
-📷 **Model Comparison**
-*(Insert: Model comparison chart)*
-
-</div>
-
----
-
-## 📂 Folder Structure
+## 📂 Project Structure
 
 ```
-Vendor-Invoice-Intelligence/
-│
-├── app.py                          # Streamlit application entry point
-│
-├── models/                         # Serialized model artifacts (Joblib)
-│   ├── predict_freight_model.pkl
-│   ├── predict_flag_invoice.pkl
-│   └── scaler.pkl
-│
-├── inference/                      # Production inference wrappers
-│   ├── predict_freight.py
-│   └── predict_invoice_flag.py
-│
-├── invoice_flagging/                # Training pipeline
-│   ├── train.py
-│   ├── model_eval.py
-│   └── data_preprocessing.py
-│
-├── notebooks/                      # Exploratory & experimental notebooks
-│   ├── Freight Prediction.ipynb
-│   └── Invoice Flagging.ipynb
-│
-├── data/
-│   └── inventory.db                # SQLite source database
-│
-├── requirements.txt                # Python dependencies
+├── api.py                    # FastAPI backend, serves predictions
+├── index.html                # Frontend UI
+├── script.js                 # Frontend logic, calls the API
+├── style.css
+├── freight_cost_prediction/  # Freight regression training pipeline
+├── invoice_flagging/         # Invoice risk classification training pipeline
+├── inference/                # Inference wrappers used by the API
+├── models/                   # Serialized models (.pkl)
+├── notebooks/                # EDA and experimentation
+├── requirements.txt
 └── README.md
 ```
 
-| Path | Purpose |
-|---|---|
-| `app.py` | User-facing Streamlit app — wires both modules together. |
-| `models/` | Trained regression/classification models and the fitted scaler. |
-| `inference/` | Loads a model + scaler and returns predictions for new input. |
-| `invoice_flagging/` | End-to-end training pipeline: data prep, training, evaluation. |
-| `notebooks/` | EDA and experimentation for each module. |
-| `data/` | Source SQLite database. |
+---
+
+## 🤖 Machine Learning
+
+**Freight Cost Prediction**
+- Problem type: Regression
+- Inputs: Quantity, Invoice Dollars
+- Model: Linear Regression
+- Result: R² ≈ 0.95 on held-out test data
+
+**Invoice Risk Assessment**
+- Problem type: Binary classification (Approved / Flagged for Manual Review)
+- Inputs: Invoice quantity, invoice dollars, freight, total item quantity, total item dollars, PO-to-invoice days, average receiving delay
+- Model: Random Forest, tuned with RandomizedSearchCV
+- Result: ~99% accuracy on held-out test data
+
+> **Limitation:** The invoice risk classifier is trained on self-defined rule-based labels, not historical audited outcomes. Its output should be treated as a triage signal for manual review, not a validated fraud or error prediction.
 
 ---
 
-## ⚙️ Installation
+## 🔌 API
+
+| Endpoint | Description |
+|---|---|
+| `GET /api/health` | Health check, returns `{"status":"ok"}` |
+| `POST /api/predict/freight` | Returns predicted freight cost |
+| `POST /api/predict/invoice` | Returns invoice risk prediction with confidence and probability |
+
+---
+
+## ⚙️ Run Locally
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/USERNAME/REPO.git
-cd REPO
+git clone https://github.com/Shubh-0077/Vendor-Invoice-Intelligence-Portal.git
+cd Vendor-Invoice-Intelligence-Portal
 
-# 2. Create a virtual environment
-python -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
-
-# 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Run the Streamlit app
-streamlit run app.py
+uvicorn api:app --reload --port 8000
 ```
 
-The app will be available at `http://localhost:8501`.
+The API will run at `http://localhost:8000`. Open `index.html` in a browser to use the frontend, and update the API base URL in `script.js` to `http://localhost:8000` so it points at your local backend.
 
 ---
 
-## 🚀 Usage
+## ☁️ Deployment
 
-### 🚚 Freight Cost Prediction
-
-1. Open the app and select **Freight Cost Prediction** from the sidebar.
-2. Enter **Quantity** and **Invoice Dollars**.
-3. Click **Predict Freight Cost**.
-4. View the **Estimated Freight Cost** returned instantly.
-
-### 🚨 Invoice Manual Approval Flagging
-
-1. Select **Invoice Manual Approval Flag** from the sidebar.
-2. Enter the seven invoice/PO features (quantity, dollars, freight, timing, and receiving signals).
-3. Click **Evaluate Invoice**.
-4. Review the output:
-   - **Predicted Status** — `Approved` or `Flagged for Manual Review`
-   - **Confidence Score** — model's certainty in the prediction
-   - **Flag Probability** — likelihood the invoice needs review
-   - **Risk Gauge** — quick visual read on invoice risk
+- Frontend deployed as a static site on Render.
+- Backend deployed as a FastAPI web service on Render.
+- Frontend calls the backend over REST; all ML inference runs server-side.
 
 ---
 
@@ -412,7 +183,7 @@ The app will be available at `http://localhost:8501`.
 |---|---|
 | **Operational Efficiency** | Routine, low-risk invoices move through faster without full manual review. |
 | **Reduced Manual Review** | Reviewer attention is concentrated on the ~35% of invoices flagged as higher risk. |
-| **Decision Support** | Confidence scores and a risk gauge give reviewers a quantified starting point. |
+| **Decision Support** | Confidence scores and a risk level indicator give reviewers a quantified starting point. |
 | **Cost Optimization** | Freight predictions offer a consistent baseline for spotting overcharges. |
 | **Time Savings** | Real-time inference replaces slower, manual, invoice-by-invoice checks. |
 
@@ -424,37 +195,24 @@ The app will be available at `http://localhost:8501`.
 
 | Category | Skills |
 |---|---|
-| Programming | Python, SQL |
+| Programming | Python, SQL, JavaScript |
 | Machine Learning | Regression, classification, ensemble methods, hyperparameter tuning |
 | Statistics | Descriptive statistics, correlation analysis, class distribution analysis |
 | Feature Engineering | Business-rule label design, SQL aggregation, derived date features |
 | EDA & Visualization | Matplotlib, Seaborn, Plotly |
-| Deployment | Streamlit application development |
+| API Development | FastAPI, REST API design, Uvicorn |
+| Frontend Development | HTML, CSS, JavaScript |
+| Deployment | Cloud deployment on Render, frontend/backend service separation |
 | Version Control | Git, GitHub |
 | Business Analytics | Translating a finance problem into a measurable ML solution |
 | Problem Solving | Root-causing and fixing a production train/inference scaling bug |
 
 ---
+## ⚠️ Limitations
 
-## 📄 License
-
-This project is licensed under the `MIT` License — see the [LICENSE](LICENSE) file for details.
+The invoice risk model's labels are self-defined business rules rather than confirmed audit outcomes, so predictions should support manual review, not replace it.
 
 ---
+## 📄 License
 
-## 📬 Contact
-
-<div align="center">
-
-[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Shubh-0077)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](http://www.linkedin.com/in/shubhammalkar)
-[![Portfolio](https://img.shields.io/badge/Portfolio-Visit-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://shubhammalkar.framer.website/)
-[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:codewleo@gmail.com)
-
-</div>
-
-<div align="center">
-
-⭐ If you found this project useful, consider giving it a star!
-
-</div>
+MIT License. See [LICENSE](LICENSE) for details.
