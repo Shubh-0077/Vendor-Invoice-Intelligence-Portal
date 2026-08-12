@@ -13,8 +13,7 @@
   // ── Configuration ──────────────────────────────────────────
   // When served from FastAPI (same origin), use relative paths.
   // When served from a different server (e.g., VS Code Live Server), use the full URL.
-  const API_BASE =
-    window.location.port === "8000" ? "" : "http://127.0.0.1:8000";
+  const API_BASE = "https://vendor-invoice-intelligence-portal-j9ac.onrender.com";
 
   // ── DOM references ─────────────────────────────────────────
   const $ = (sel) => document.querySelector(sel);
