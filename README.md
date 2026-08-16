@@ -257,4 +257,4 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 </div>
 
-<div align="center"> ⭐ If you found this project useful, consider giving it a star! </div>
+<div align="center"> ⭐ If you found this project useful, consider giving it a star!! </div>
